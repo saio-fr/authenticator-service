@@ -4,11 +4,11 @@
 		"realms": [{
 			"name": "saio",
 			"roles": [{
-				"name": "public",
-				"authorizer": "fr.saio.service.authorizer.public.crossbar.can"
+				"name": "anonymous",
+				"authorizer": "fr.saio.service.authorizer.anonymous.crossbar.can"
 			}, {
-				"name": "protected",
-				"authorizer": "fr.saio.service.authorizer.protected.crossbar.can"
+				"name": "registered",
+				"authorizer": "fr.saio.service.authorizer.registered.crossbar.can"
 			}, {
 				"name": "service",
 				"permissions": [{
