@@ -52,7 +52,7 @@ sh tasks/test.sh
 sh tasks/crossbar/stop.sh // to clean docker
 ```
 
-Be carefull of putting a correct crossbarUrl in config/config.json according to your environment:
+Be carefull of putting a correct crossbarUrl in config/config.json & test/authenticator.test.integration.js according to your environment:
 ```
 Mac: your docker ip provided by boot2docker,
 Linux: localhost,

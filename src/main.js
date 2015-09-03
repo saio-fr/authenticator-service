@@ -80,7 +80,7 @@ Authenticator.prototype.authenticate = function(realm, authid, ticket) {
     };
   } catch (err) {
     // err
-    throw new Error('Unable to authenticate. reason: ' + err.message);
+    throw err;
   }
 };
 

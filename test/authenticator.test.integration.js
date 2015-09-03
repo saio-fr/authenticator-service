@@ -2,7 +2,7 @@ var autobahn = require('autobahn');
 var when = require('when');
 var tape = require('blue-tape');
 
-var crossbarUrl = 'ws://192.168.99.100:8080';
+var crossbarUrl = 'ws://localhost:8080';
 
 tape('valid-token', function(t) {
 
