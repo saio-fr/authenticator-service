@@ -1,0 +1,33 @@
+{
+  "name": "@saio/authenticator-service",
+  "version": "0.1.0",
+  "description": "Service to authenticate user on connection",
+  "main": "./src/main.js",
+  "dependencies": {
+    "@saio/service-runner": "*",
+    "@saio/wsocket-component": "*",
+    "when": ">= 2.8.0",
+    "underscore": "*",
+    "jsonwebtoken": "*"
+  },
+  "devDependencies": {
+    "eslint": "~1.3",
+    "blue-tape": "*",
+    "tap-spec": "*",
+    "autobahn": "*"
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "blue-tape test/**/*.test.js | tap-spec",
+    "start": "service-runner src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:saio-fr/authenticate-service.git"
+  },
+  "author": "saio",
+  "bugs": {
+    "url": "https://github.com/saio-fr/authenticate-service/issues"
+  },
+  "homepage": "https://github.com/saio-fr/authenticate-service"
+}

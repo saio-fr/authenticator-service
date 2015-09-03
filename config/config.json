@@ -1,0 +1,9 @@
+{
+  "ws": {
+    "url": "ws://crossbar:8081",
+    "domain": "fr.saio.service",
+    "realm": "saio",
+    "authId": "service",
+    "password": "service"
+  }
+}
