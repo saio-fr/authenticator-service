@@ -37,7 +37,7 @@ var connection = new autobahn.Connection({
   onchallenge: onchallenge
 });
 ```
-If the token provided is valid, they will be authentificate as ***registered*** user. Else, the ws connection will be closed.
+If the token provided is valid, they will be authentificate as ***registered*** (ex: operators) user if token.payload.roles is not empty. Else, they will be authenticate as ***anonymous*** (ex: visitors). Else, the ws connection will be closed.
 
 ### How to test
 For simple unit testing, simply run:
