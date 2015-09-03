@@ -1,5 +1,4 @@
 #!/bin/bash
-pwd
 cat > tasks/deploy/build/authenticator-controller.yml <<EOF
 
 apiVersion: v1

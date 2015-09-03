@@ -19,7 +19,7 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "blue-tape test/**/*.test.js | tap-spec",
-    "start": "service-runner src/main.js --ws-url ws://crossbar:8081"
+    "start": "service-runner src/main.js"
   },
   "repository": {
     "type": "git",
