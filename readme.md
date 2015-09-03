@@ -1,5 +1,7 @@
 ## Authenticator service
 
+[![Circle CI](https://circleci.com/gh/saio-fr/authenticator-service.svg?style=svg)](https://circleci.com/gh/saio-fr/authenticator-service)
+
 Authenticator is our auth service based on jsonwebtoken (JWT).
 
 JWTs are generated on our frontend servers (php right now, node in future) and set on client side in cookies & local storage.
