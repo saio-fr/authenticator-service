@@ -1,18 +1,10 @@
 #!/bin/bash
 rm -f config/config.json
 
-if [ "$CIRCLE_BRANCH" = "develop" ]; then
-    export CROSSBAR_URL='"ws://crossbar-private.staging.cluster.local"'
-fi
-
-if [ "$CIRCLE_BRANCH" = "master" ]; then
-    export CROSSBAR_URL='"ws://crossbar-private.production.cluster.local"'
-fi
-
 cat > config/config.json <<EOF
 {
   "ws": {
-    "url": $CROSSBAR_URL,
+    "url": "ws://crossbar-private:8081",
     "domain": "fr.saio.service",
     "realm": "saio",
     "authId": "service",
