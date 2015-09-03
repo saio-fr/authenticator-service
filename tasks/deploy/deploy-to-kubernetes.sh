@@ -11,8 +11,8 @@ if [ ! -d ~/kubernetes ]; then
 fi
 
 # create rc config
-mkdir scripts/build
-chmod +x scripts/create-authenticator-controller.yml.sh && scripts/create-authenticator-controller.yml.sh
+mkdir tasks/deploy/build
+chmod +x tasks/deploy/create-authenticator-controller.yml.sh && tasks/deploy/create-authenticator-controller.yml.sh
 
 # export kubectl parameters
 export KUBERNETES_KUBECTL=~/kubernetes/cluster/kubectl.sh
@@ -34,7 +34,7 @@ fi
 
 if [ $($KUBERNETES_CMD get rc | grep -c authenticator) -ne 1 ]; then
     echo "Create authenticator rc"
-    $KUBERNETES_CMD create -f scripts/build/authenticator-controller.yml
+    $KUBERNETES_CMD create -f tasks/deploy/build/authenticator-controller.yml
 else
     echo "Rolling update authenticator rc"
     $KUBERNETES_CMD rolling-update authenticator --update-period=10s --image=${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}
