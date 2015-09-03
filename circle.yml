@@ -13,10 +13,12 @@ dependencies:
     - docker build -t ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} .
     - mkdir -p ~/docker; docker save ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} > ~/docker/image.tar
     - chmod +x tasks/crossbar/start.sh && tasks/crossbar/start.sh
+    - npm install
 
 test:
   override:
-    - docker run -d -p 8081:8081 ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}; sleep 10
+    - npm test
+    - docker run -d ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}; sleep 10
     - chmod +x tasks/test.sh && tasks/test.sh
 
 deployment:
