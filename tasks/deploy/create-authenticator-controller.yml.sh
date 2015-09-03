@@ -1,6 +1,6 @@
 #!/bin/bash
 pwd
-cat > scripts/build/authenticator-controller.yml <<EOF
+cat > tasks/deploy/build/authenticator-controller.yml <<EOF
 
 apiVersion: v1
 kind: ReplicationController
@@ -11,7 +11,7 @@ metadata:
     branch: ${CIRCLE_BRANCH}
     commit: ${CIRCLE_SHA1}
 spec:
-  replicas: 1
+  replicas: ${REPLICAS_NUMBER}
   # selector identifies the set of pods that this
   # replication controller is responsible for managing
   selector:
