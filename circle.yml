@@ -12,12 +12,12 @@ dependencies:
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build -t ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} .
     - mkdir -p ~/docker; docker save ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} > ~/docker/image.tar
-    - tasks/crossbar/start.sh
+    - chmod +x tasks/crossbar/start.sh && tasks/crossbar/start.sh
 
 test:
   override:
     - docker run -d -p 8081:8081 ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}; sleep 10
-    - tasks/test.sh
+    - chmod +x tasks/test.sh && tasks/test.sh
 
 deployment:
   kubernetes:
