@@ -32,6 +32,7 @@ tape('valid-token', function(t) {
     t.end();
   };
 
+  t.timeoutAfter(10000);
   connection.open();
 });
 
@@ -64,6 +65,7 @@ tape('invalid-token', function(t) {
     t.end();
   };
 
+  t.timeoutAfter(10000);
   connection.open();
 });
 
@@ -95,5 +97,6 @@ tape('invalid-realm', function(t) {
     t.end();
   };
 
+  t.timeoutAfter(10000);
   connection.open();
 });
