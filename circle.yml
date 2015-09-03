@@ -13,6 +13,7 @@ dependencies:
     - docker build -t ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} .
     - mkdir -p ~/docker; docker save ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} > ~/docker/image.tar
     - chmod +x tasks/crossbar/start.sh && tasks/crossbar/start.sh
+    - echo $NPM_TOKEN > ~/.npmrc
     - npm install
 
 test:
