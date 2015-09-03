@@ -23,6 +23,6 @@ deployment:
   kubernetes:
     branch: [master, develop]
     commands:
-      - chmod +x scripts/auth-gcloud.sh && scripts/auth-gcloud.sh
+      - chmod +x tasks/deploy/auth-gcloud.sh && scripts/auth-gcloud.sh
       - gcloud docker push ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} > /dev/null
-      - chmod +x scripts/deploy-to-kubernetes.sh && scripts/deploy-to-kubernetes.sh
+      - chmod +x tasks/deploy/deploy-to-kubernetes.sh && tasks/deploy/deploy-to-kubernetes.sh
