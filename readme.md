@@ -16,7 +16,7 @@ A typical JWT payload before encoding looks like:
 }
 ```
 
-When users want to authenticate, they challenge our crossbar router with a ticket auth:
+When users want to authenticate, they challenge our service with a ticket:
 
 ```
 var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...';
@@ -38,7 +38,7 @@ var connection = new autobahn.Connection({
 If the token provided is valid, they will be authentificate as ***registered*** user. Else, the ws connection will be closed.
 
 ### How to test
-For simple units testing, simply run:
+For simple unit testing, simply run:
 ```
 npm test
 ```
