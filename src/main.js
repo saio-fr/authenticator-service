@@ -34,7 +34,7 @@ Authenticator.prototype.start = function() {
       return that.authenticate(realm, authid, ticket);
     } catch (err) {
       console.error(err.stack);
-      return false;
+      throw err.message;
     }
   };
 
@@ -63,13 +63,13 @@ Authenticator.prototype.authenticate = function(realm, authid, ticket) {
     var decoded = jwt.verify(ticket, this.secret);
 
     if (!decoded.aud) {
-      throw new Error('Invalid audience provided');
+      throw new Error('invalid audience provided');
     } else {
       var aud = decoded.aud;
     }
 
     if (decoded.iss != realm) {
-      throw new Error('Invalid issuer provided for that realm');
+      throw new Error('invalid issuer provided for that realm');
     }
 
     var role = (!_.isEmpty(decoded.roles)) ? 'registered' : 'anonymous';

@@ -60,8 +60,7 @@ tape('invalid-token', function(t) {
   };
 
   connection.onclose = function(reason, details) {
-
-    t.equal(details.reason, 'wamp.error.authorization_failed');
+    t.equal(details.message, 'invalid token');
     t.end();
   };
 
@@ -72,7 +71,7 @@ tape('invalid-token', function(t) {
 
 tape('invalid-realm', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvIiwiaWF0IjoxNDQxMjc1MDE0LCJleHAiOjE0NzI4MTEwMTUsImF1ZCI6IjU0ODA1M2M5YTE4ZTIiLCJzdWIiOiI1NWU2ZGZlZGQ0ZGE0IiwibGljZW5jZSI6IjU0ODA1M2M5YTE4ZTIiLCJyb2xlcyI6IlsgICAgIFwiUk9MRV9BRE1JTlwiLCAgICAgXCJST0xFX1VTRVJcIiAgIF0ifQ.d8E2aR97_sMAeqyiEswz64O43Iq5BJGLG7AAn6hnky0';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiZXhwIjoxNDQxMzYyNjE2LCJhdWQiOiJkc3FkcWQiLCJzdWIiOiJkc3FkcWQifQ.fzfN_tiMhBTMiiKwMDKbIqy9ukbTp8u8sODpODac9mQ';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
@@ -81,7 +80,7 @@ tape('invalid-realm', function(t) {
 
   var connection = new autobahn.Connection({
     url: crossbarUrl,
-    realm: 'saioooO',
+    realm: 'saio',
 
     authmethods: ['ticket'],
     authid: '',
@@ -93,7 +92,39 @@ tape('invalid-realm', function(t) {
   };
 
   connection.onclose = function(reason, details) {
-    t.equal(details.reason, 'wamp.error.no_such_realm');
+    t.equal(details.message, 'invalid issuer provided for that realm');
+    t.end();
+  };
+
+  t.timeoutAfter(10000);
+  connection.open();
+});
+
+
+tape('invalid-aud', function(t) {
+
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiZXhwIjoxNDQxMzYyNjE2LCJhdWQiOiIiLCJzdWIiOiJkc3FkcWQifQ.3D8y6KsNh7Pu5KSCtIpFCjs-esDJIn0TFap4lLoVZ_4';
+
+  function onchallenge(session, method, extra) {
+    t.equal(method, 'ticket');
+    return token;
+  }
+
+  var connection = new autobahn.Connection({
+    url: crossbarUrl,
+    realm: 'saio',
+
+    authmethods: ['ticket'],
+    authid: '',
+    onchallenge: onchallenge
+  });
+
+  connection.onopen = function(session) {
+    t.fail('auth was successful');
+  };
+
+  connection.onclose = function(reason, details) {
+    t.equal(details.message, 'invalid audience provided');
     t.end();
   };
 
