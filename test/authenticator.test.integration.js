@@ -6,7 +6,7 @@ var crossbarUrl = 'ws://localhost:8080';
 
 tape('valid-token', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvIiwiaWF0IjoxNDQxMjc1MDE0LCJleHAiOjE0NzI4MTEwMTUsImF1ZCI6IjU0ODA1M2M5YTE4ZTIiLCJzdWIiOiI1NWU2ZGZlZGQ0ZGE0IiwibGljZW5jZSI6IjU0ODA1M2M5YTE4ZTIiLCJyb2xlcyI6IlsgICAgIFwiUk9MRV9BRE1JTlwiLCAgICAgXCJST0xFX1VTRVJcIiAgIF0ifQ.d8E2aR97_sMAeqyiEswz64O43Iq5BJGLG7AAn6hnky0';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvIiwiaWF0IjoxNDQxMjc1MDE0LCJhdWQiOiI1NDgwNTNjOWExOGUyIiwic3ViIjoiNTVlNmRmZWRkNGRhNCIsImxpY2VuY2UiOiI1NDgwNTNjOWExOGUyIiwicm9sZXMiOiJbICAgICBcIlJPTEVfQURNSU5cIiwgICAgIFwiUk9MRV9VU0VSXCIgICBdIn0.9skeoih66OxpXI0qq59j91eprc_4A6ImcVhB1Co6kXA';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
@@ -71,7 +71,7 @@ tape('invalid-token', function(t) {
 
 tape('invalid-realm', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiZXhwIjoxNDQxMzYyNjE2LCJhdWQiOiJkc3FkcWQiLCJzdWIiOiJkc3FkcWQifQ.fzfN_tiMhBTMiiKwMDKbIqy9ukbTp8u8sODpODac9mQ';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiZHNxZHFkIiwic3ViIjoiZHNxZHFkIn0.Xja-aWI7bPPGpjtF-B2uSy4Bc9Xb5jhH3IVISR3Wf3c';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
@@ -103,7 +103,7 @@ tape('invalid-realm', function(t) {
 
 tape('invalid-aud', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiZXhwIjoxNDQxMzYyNjE2LCJhdWQiOiIiLCJzdWIiOiJkc3FkcWQifQ.3D8y6KsNh7Pu5KSCtIpFCjs-esDJIn0TFap4lLoVZ_4';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiIiwic3ViIjoiZHNxZHFkIn0.bZ8eb2QJOoQRc6LZmKz2ifz4lNMtPZixCv-hEEni5g4';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
