@@ -4,12 +4,12 @@ var when = require('when');
 var wsocket = require('@saio/wsocket-component');
 var jwt = require('jsonwebtoken');
 
-var buildConfig = require('../config/build.js');
+var Config = require('./config.js');
 
 //var Logger = require('@saio/logger-component');
 
 var Authenticator = function(container, options) {
-  var config = this._buildConfig(options);
+  var config = Config.build(options);
 
   this.domain = config.ws.domain;
 
@@ -83,7 +83,5 @@ Authenticator.prototype.authenticate = function(realm, authid, ticket) {
     throw err;
   }
 };
-
-Authenticator.prototype._buildConfig = buildConfig;
 
 module.exports = Authenticator;
