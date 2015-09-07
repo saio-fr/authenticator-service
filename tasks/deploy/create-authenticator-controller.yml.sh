@@ -28,8 +28,10 @@ spec:
     spec:
       containers:
         - name: authenticator
+        - args:
+          - --ws-url
+          - ws://crossbar-private:8081
           image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}
-          command: ["--ws-url", "ws://crossbar-private:8081"]
           ports:
             - containerPort: 8081
 
