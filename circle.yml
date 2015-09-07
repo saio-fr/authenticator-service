@@ -20,7 +20,6 @@ deployment:
   kubernetes:
     branch: [master, develop]
     commands:
-      - chmod +x tasks/deploy/create-config.json.sh && tasks/deploy/create-config.json.sh
       - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
       - docker build -t ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} .
       - mkdir -p ~/docker; docker save ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1} > ~/docker/image.tar
