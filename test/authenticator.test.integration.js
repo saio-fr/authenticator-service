@@ -71,7 +71,7 @@ tape('invalid-token', function(t) {
 
 tape('invalid-realm', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiZHNxZHFkIiwic3ViIjoiZHNxZHFkIn0.Xja-aWI7bPPGpjtF-B2uSy4Bc9Xb5jhH3IVISR3Wf3c';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiZHNxZHFkIiwic3ViIjoiZHNxZHFkIn0.kHO_QYRfV0HuiT_LReaMU48ArheUHBN4p69lyzRZ55c';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
@@ -103,7 +103,7 @@ tape('invalid-realm', function(t) {
 
 tape('invalid-aud', function(t) {
 
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiIiwic3ViIjoiZHNxZHFkIn0.bZ8eb2QJOoQRc6LZmKz2ifz4lNMtPZixCv-hEEni5g4';
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzYWlvZCIsImlhdCI6MTQ0MTM2MTQxNiwiYXVkIjoiIiwic3ViIjoiZHNxZHFkIn0.EvPiPOjGrFEZYocldXnuEiNZdiG7Bu4zuXt9kFOn_mI';
 
   function onchallenge(session, method, extra) {
     t.equal(method, 'ticket');
