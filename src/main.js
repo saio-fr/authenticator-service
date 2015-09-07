@@ -12,7 +12,7 @@ var Authenticator = function(container, options) {
   var config = Config.build(options);
 
   this.domain = config.ws.domain;
-
+  console.log('connecting to:' + config.ws.url);
   this.ws = container.use('ws', wsocket, config.ws);
   this.secret = 'C1F164C84C89C51E57A7BD8FBDA36';
 
