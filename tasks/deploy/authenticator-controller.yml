@@ -1,6 +1,3 @@
-#!/bin/bash
-cat > tasks/deploy/build/authenticator-controller.yml <<EOF
-
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -33,5 +30,3 @@ spec:
         image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}
         ports:
           - containerPort: 8081
-
-EOF
