@@ -19,6 +19,8 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "blue-tape test/**/*.test.js | tap-spec",
+    "test.integration": "bash tasks/test.integration.sh",
+    "test.integration.clean": "bash tasks/test.integration.clean.sh",
     "start": "service-runner src/main.js"
   },
   "repository": {

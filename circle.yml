@@ -10,13 +10,11 @@ dependencies:
   override:
     - echo $NPM_TOKEN > ~/.npmrc
     - npm install
-    - chmod +x tasks/crossbar/start.sh && tasks/crossbar/start.sh
 
 test:
   override:
     - npm test
-    - docker run -d ${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}; sleep 10
-    - chmod +x tasks/test.sh && tasks/test.sh
+    - npm run test.integration
 
 deployment:
   kubernetes:
