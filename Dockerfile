@@ -10,5 +10,4 @@ RUN npm install
 
 EXPOSE 8080 8081
 
-ENTRYPOINT ["npm"]
-CMD ["start"]
+CMD ["npm", "start"]
