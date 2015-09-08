@@ -10,6 +10,9 @@ if [ ! -d ~/kubernetes ]; then
   chmod +x ~/kubernetes/cluster/kubectl.sh
 fi
 
+#  create rc config
+chmod +x tasks/deploy/authenticator-controller.yml.sh && tasks/deploy/authenticator-controller.yml.sh
+
 # export kubectl parameters
 export KUBERNETES_KUBECTL=~/kubernetes/cluster/kubectl.sh
 export KUBERNETES_CMD="$KUBERNETES_KUBECTL --server=${KUBERNETES_SERVER} --username=${KUBERNETES_USERNAME} --password=${KUBERNETES_PASSWORD} --insecure-skip-tls-verify=true"
@@ -29,9 +32,6 @@ if [ "$CIRCLE_BRANCH" = "master" ]; then
     $KUBERNETES_CMD config use-context production
     export REPLICAS_NUMBER=2
 fi
-
-echo $REPLICAS_NUMBER;
-echo tasks/deploy/authenticator-controller.yml
 
 if [ $($KUBERNETES_CMD get rc | grep -c authenticator) -ne 1 ]; then
     echo "Create authenticator rc with replicas:" $REPLICAS_NUMBER

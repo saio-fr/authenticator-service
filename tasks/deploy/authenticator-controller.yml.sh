@@ -1,3 +1,7 @@
+#!/bin/bash
+
+cat > tasks/authenticator-controller.yml <<EOF
+
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -29,4 +33,5 @@ spec:
         args: ["--ws-url", "ws://crossbar-private:8081"]
         image: eu.gcr.io/saio-fr/authenticator:$(CIRCLE_BRANCH)_$(CIRCLE_SHA1)
         ports:
-          - containerPort: 8081
+        - containerPort: 8081
+EOF
