@@ -9,7 +9,6 @@ metadata:
   labels:
     name: authenticator
     branch: ${CIRCLE_BRANCH}
-    commit: ${CIRCLE_SHA1}
 spec:
   replicas: ${REPLICAS_NUMBER}
   # selector identifies the set of pods that this
@@ -31,7 +30,7 @@ spec:
       - name: authenticator
         command: ["npm", "start", "--"]
         args: ["--ws-url", "ws://crossbar-private:8081"]
-        image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}
+        image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}
         ports:
         - containerPort: 8081
 EOF

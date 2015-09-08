@@ -38,5 +38,5 @@ if [ $($KUBERNETES_CMD get rc | grep -c authenticator) -ne 1 ]; then
     $KUBERNETES_CMD create -f tasks/deploy/authenticator-controller.yml
 else
     echo "Rolling update authenticator rc"
-    $KUBERNETES_CMD rolling-update authenticator --update-period=10s --image=${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}_${CIRCLE_SHA1}
+    $KUBERNETES_CMD rolling-update authenticator --update-period=10s --image=${EXTERNAL_REGISTRY_ENDPOINT}/authenticator:${CIRCLE_BRANCH}
 fi
