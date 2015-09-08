@@ -30,7 +30,7 @@ spec:
       - name: authenticator
         command: ["npm", "start", "--"]
         args: ["--ws-url", "ws://crossbar-private:8081"]
-        image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}
+        image: eu.gcr.io/saio-fr/authenticator:${CIRCLE_BRANCH}.${CIRCLE_SHA1}
         ports:
         - containerPort: 8081
 EOF
