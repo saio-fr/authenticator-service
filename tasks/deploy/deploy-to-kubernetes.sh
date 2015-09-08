@@ -21,14 +21,17 @@ $KUBERNETES_CMD config set-context production --namespace=production --cluster=s
 if [ "$CIRCLE_BRANCH" = "develop" ]; then
     echo 'Using staging namespace'
     $KUBERNETES_CMD config use-context staging
-    export REPLICAS_NUMBER="1"
+    export REPLICAS_NUMBER=1
 fi
 
 if [ "$CIRCLE_BRANCH" = "master" ]; then
     echo 'Using production namespace'
     $KUBERNETES_CMD config use-context production
-    export REPLICAS_NUMBER="2"
+    export REPLICAS_NUMBER=2
 fi
+
+echo $REPLICAS_NUMBER;
+echo tasks/deploy/authenticator-controller.yml
 
 if [ $($KUBERNETES_CMD get rc | grep -c authenticator) -ne 1 ]; then
     echo "Create authenticator rc with replicas:" $REPLICAS_NUMBER
