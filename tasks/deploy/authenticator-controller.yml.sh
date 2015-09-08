@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat > tasks/authenticator-controller.yml <<EOF
+cat > tasks/deploy/authenticator-controller.yml <<EOF
 
 apiVersion: v1
 kind: ReplicationController
